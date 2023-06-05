@@ -1,21 +1,21 @@
 import React from "react";
-import CardInterface from "../interfaces/CardInterface";
 import Spinner from "../../general/components/Spinner";
 import Error from "../../general/components/Error";
-import Cards from "./Cards";
 import Typography from "@mui/material/Typography";
+import MemoryInterface from "../interfaces/MemoryInterface";
+import Memories from "./Memories";
 
 type Props = {
   isLoading: boolean;
   error: string | null;
-  cards: CardInterface[] | null;
+  memories: MemoryInterface[] | null;
 };
 
-const CardsFeedback: React.FC<Props> = ({ isLoading, error, cards }) => {
+const MemoriesFeedback: React.FC<Props> = ({ isLoading, error, memories }) => {
   if (isLoading) return <Spinner />;
   if (error) return <Error errorMessage={error} />;
-  if (cards && cards.length) return <Cards cards={cards} />;
-  if (cards && !cards.length)
+  if (memories && memories.length) return <Memories memories={memories} />;
+  if (memories && !memories.length)
     return (
       <Typography>
         Oops, there are no business cards in the database that match the
@@ -25,4 +25,4 @@ const CardsFeedback: React.FC<Props> = ({ isLoading, error, cards }) => {
   return null;
 };
 
-export default CardsFeedback;
+export default MemoriesFeedback;

@@ -7,13 +7,11 @@ import connectToDB from "./DB/mongoDB.mjs";
 import router from "./router/router.mjs";
 import dotenv from "dotenv";
 import { generateInitialUsers } from "./initialData/initialDataService.mjs";
+import { handleError } from "./utils/handleErrors.mjs";
+// import path from "path";
 
 dotenv.config();
 const app = express();
-
-// app.use(express.json());
-// app.use(express.urlencoded());
-app.use(express.static("./public"));
 
 // Checking the data sent to the server and limit it's size
 app.use(bodyParser.json({ limit: "30mb", extended: true }));

@@ -5,32 +5,29 @@ import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import CallIcon from "@mui/icons-material/Call";
+import ShareIcon from "@mui/icons-material/Share";
 
 type Props = {
   onDelete: (x: string) => void;
-  cardId: string;
+  memoryId: string;
 };
 
-const CardActionBar: React.FC<Props> = ({ onDelete, cardId }) => {
-  const handleEditCard = () =>
-    console.log(`you moved to edit card no: ${cardId}`);
-
+const MemoryActionBar: React.FC<Props> = ({ onDelete, memoryId }) => {
   return (
     <CardActions disableSpacing sx={{ pt: 0, justifyContent: "space-between" }}>
       <Box>
-        <IconButton onClick={() => onDelete(cardId)} aria-label="delete card">
+        <IconButton onClick={() => onDelete(memoryId)} aria-label="delete card">
           <DeleteIcon />
         </IconButton>
 
-        <IconButton onClick={handleEditCard} aria-label="edit card">
+        <IconButton onClick={() => {}} aria-label="edit card">
           <EditIcon />
         </IconButton>
       </Box>
 
       <Box>
-        <IconButton aria-label="call business">
-          <CallIcon />
+        <IconButton aria-label="Share">
+          <ShareIcon />
         </IconButton>
         <IconButton aria-label="add to fav">
           <FavoriteIcon />
@@ -40,4 +37,4 @@ const CardActionBar: React.FC<Props> = ({ onDelete, cardId }) => {
   );
 };
 
-export default CardActionBar;
+export default MemoryActionBar;

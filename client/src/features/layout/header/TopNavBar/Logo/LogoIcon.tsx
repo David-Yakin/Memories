@@ -13,7 +13,7 @@ const LogoIcon = () => {
         edge="start"
         color="inherit"
         aria-label="menu">
-        <Avatar alt="memories icon" src="/assets/images/familyPic.png" />
+        <Avatar alt="memories icon" src="assets/images/familyPic.png" />
       </IconButton>
     </NavBarLink>
   );

@@ -1,5 +1,4 @@
 import axios from "axios";
-import CardInterface from "../interfaces/CardInterface";
 import MemoryInterface from "../interfaces/MemoryInterface";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 

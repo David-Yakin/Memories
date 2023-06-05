@@ -3,17 +3,12 @@ import chalk from "chalk";
 import normalizeUser from "../users/helpers/normalizeUser.mjs";
 import { generateUserPassword } from "../users/helpers/bcrypt.mjs";
 import User from "../users/models/mongoose/User.mjs";
+import path from "path";
+import data from "./initialData.json" assert { type: "json" };
 
 export const generateInitialUsers = async () => {
   try {
-    const {
-      data: { users },
-    } = await axios({
-      headers: { Accept: "text/html, application/json, text/plain, */*" },
-      url: "http://localhost:5000/initialData.json",
-      method: "get",
-    });
-
+    const { users } = data;
     users.forEach(async user => {
       try {
         const userExists = await User.findOne({ email: user.email });
