@@ -79,6 +79,7 @@ const Form: FC<Props> = ({
             onClick={onSubmit}
             disabled={!!onFormChange()}
             size="large"
+            color="secondary"
           />
         </Grid>
       </Grid>

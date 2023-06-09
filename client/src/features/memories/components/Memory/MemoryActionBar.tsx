@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import CardActions from "@mui/material/CardActions";
@@ -13,6 +13,8 @@ type Props = {
 };
 
 const MemoryActionBar: React.FC<Props> = ({ onDelete, memoryId }) => {
+  const [isDialogOpen, setDialog] = useState(false);
+
   return (
     <CardActions disableSpacing sx={{ pt: 0, justifyContent: "space-between" }}>
       <Box>

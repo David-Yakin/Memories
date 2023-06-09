@@ -11,12 +11,12 @@ import {
 import auth from "../../auth/authService.mjs";
 const router = express.Router();
 
-router.post("/", auth, createMemory);
 router.get("/", auth, getMemories);
 router.get("/:memoryId", auth, getMemory);
+router.post("/", auth, createMemory);
 router.put("/:memoryId", auth, editMemory);
-router.delete("/:memoryId", auth, deleteMemory);
 router.patch("/:memoryId", auth, shareMemory);
 router.patch("/like/:memoryId", auth, likeMemory);
+router.delete("/:memoryId", auth, deleteMemory);
 
 export default router;

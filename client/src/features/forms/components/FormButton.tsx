@@ -29,6 +29,7 @@ const FormButton: FC<Props> = ({
 }) => {
   return (
     <Button
+      sx={{ alignItems: "center" }}
       variant={variant}
       component={component}
       size={size}

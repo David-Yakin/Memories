@@ -4,7 +4,7 @@ import Input from "../../forms/components/Input";
 import FormLink from "../../forms/components/FormLink";
 import Joi from "joi";
 import { LoginErrors, LoginType } from "../models/types/userTypes";
-import ROUTS from "../../routes/routesModel";
+import ROUTES from "../../routes/routesModel";
 
 type Props = {
   onSubmit: () => void;
@@ -48,7 +48,7 @@ const LoginForm: FC<Props> = ({
         onInputChange={onInputChange}
       />
 
-      <FormLink text="Did not registered yet?" to={ROUTS.SIGNUP} />
+      <FormLink text="Did not registered yet?" to={ROUTES.SIGNUP} />
     </Form>
   );
 };

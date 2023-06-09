@@ -2,7 +2,7 @@ import MuiMenu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Box from "@mui/material/Box";
 import MenuLink from "./MenuLink";
-import ROUTS from "../../../../routes/routesModel";
+import ROUTES from "../../../../routes/routesModel";
 import { useAppDispatch, useAppSelector } from "../../../../../app/hooks";
 import { logout } from "../../../../users/slices/authSlice";
 import DeleteDialog from "../../../../general/components/DeleteDialog";
@@ -58,7 +58,7 @@ const Menu: React.FC<Props> = ({ isOpen, anchorEl, onClose }) => {
       <Box>
         <MenuLink
           label="about"
-          navigateTo={ROUTS.ABOUT}
+          navigateTo={ROUTES.ABOUT}
           onClick={onClose}
           styles={{ display: { xs: "block", md: "none" } }}
         />
@@ -67,13 +67,13 @@ const Menu: React.FC<Props> = ({ isOpen, anchorEl, onClose }) => {
           <>
             <MenuLink
               label="login"
-              navigateTo={ROUTS.LOGIN}
+              navigateTo={ROUTES.LOGIN}
               onClick={onClose}
               styles={{ display: { xs: "block", md: "none" } }}
             />
             <MenuLink
               label="signup"
-              navigateTo={ROUTS.SIGNUP}
+              navigateTo={ROUTES.SIGNUP}
               onClick={onClose}
               styles={{ display: { xs: "block", md: "none" } }}
             />
@@ -83,7 +83,7 @@ const Menu: React.FC<Props> = ({ isOpen, anchorEl, onClose }) => {
             <MenuLink label="profile" navigateTo={""} onClick={onClose} />
             <MenuLink
               label="edit account"
-              navigateTo={ROUTS.EDIT_USER}
+              navigateTo={ROUTES.EDIT_USER}
               onClick={onClose}
             />
             <MenuItem onClick={onLogout}>Logout</MenuItem>

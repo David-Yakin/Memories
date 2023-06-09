@@ -2,7 +2,7 @@ import React from "react";
 import { Box } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
 import MemoryBodyRow from "./MemoryBodyRow";
-import MemoryInterface from "../../interfaces/MemoryInterface";
+import MemoryInterface from "../../models/interfaces/MemoryInterface";
 import { makeFirstLetterCapital } from "../../utils/algoMethods";
 import NameInterface from "../../../users/models/interfaces/NameInterface";
 

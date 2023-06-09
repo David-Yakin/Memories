@@ -21,5 +21,6 @@ export type RegistrationForm = {
 };
 
 export type RegistrationFormErrors = Partial<RegistrationForm>;
+
 export type EditUserFormType = Omit<RegistrationForm, "email" | "password">;
 export type EditUserFormErrorsType = Partial<EditUserFormType>;

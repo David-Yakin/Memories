@@ -1,6 +1,6 @@
 import React from "react";
 import CardMedia from "@mui/material/CardMedia";
-import MemoryInterface from "../../interfaces/MemoryInterface";
+import MemoryInterface from "../../models/interfaces/MemoryInterface";
 import CardHeader from "@mui/material/CardHeader";
 import Box from "@mui/material/Box";
 import moment from "moment";

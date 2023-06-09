@@ -1,11 +1,11 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import NavBarLink from "../../../components/NavBarLink";
-import ROUTS from "../../../../routes/routesModel";
+import ROUTES from "../../../../routes/routesModel";
 
 const Logo = () => {
   return (
-    <NavBarLink to={ROUTS.ROOT}>
+    <NavBarLink to={ROUTES.ROOT}>
       <Typography
         variant="h4"
         sx={{

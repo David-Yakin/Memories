@@ -2,7 +2,7 @@ import React from "react";
 import Spinner from "../../general/components/Spinner";
 import Error from "../../general/components/Error";
 import Typography from "@mui/material/Typography";
-import MemoryInterface from "../interfaces/MemoryInterface";
+import MemoryInterface from "../models/interfaces/MemoryInterface";
 import Memories from "./Memories";
 
 type Props = {
@@ -18,8 +18,9 @@ const MemoriesFeedback: React.FC<Props> = ({ isLoading, error, memories }) => {
   if (memories && !memories.length)
     return (
       <Typography>
-        Oops, there are no business cards in the database that match the
-        parameters you entered!
+        Oops I can't recall any memory...
+        <br />
+        It's time to make a new one!
       </Typography>
     );
   return null;

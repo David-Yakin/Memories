@@ -1,13 +1,14 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import { memoryReducer } from "../features/momories/memorySlice";
+
 import authReducer from "../features/users/slices/authSlice";
+import memoriesReducer from "../features/memories/slices/memoriesSlice";
 import { apiSlice } from "./apiSlice";
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
+    memories: memoriesReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
-    memories: memoryReducer,
   },
   middleware: GetDefaultMiddleware =>
     GetDefaultMiddleware().concat(apiSlice.middleware),

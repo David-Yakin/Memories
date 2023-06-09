@@ -7,7 +7,7 @@ import ROUTES from "../../../routes/routesModel";
 import MemoryHead from "./MemoryHead";
 import MemoryBody from "./MemoryBody";
 import Grid from "@mui/material/Grid";
-import MemoryInterface from "../../interfaces/MemoryInterface";
+import MemoryInterface from "../../models/interfaces/MemoryInterface";
 
 type Props = {
   memory: MemoryInterface;
@@ -20,7 +20,7 @@ const Memory: React.FC<Props> = ({ memory }) => {
     <Grid item xs={12} sm={6} lg={4}>
       <MuiCard sx={{ minWidth: 280 }}>
         <CardActionArea
-          onClick={() => navigate(`${ROUTES.MEMORIES}/${memory._id}`)}>
+          onClick={() => navigate(`${ROUTES.MEMORY_DETAILS}/${memory._id}`)}>
           <MemoryHead memory={memory} />
           <MemoryBody memory={memory} />
         </CardActionArea>

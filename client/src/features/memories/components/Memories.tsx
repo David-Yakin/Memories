@@ -1,6 +1,6 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
-import MemoryInterface from "../interfaces/MemoryInterface";
+import MemoryInterface from "../models/interfaces/MemoryInterface";
 import Memory from "./Memory/Memory";
 
 type Props = {

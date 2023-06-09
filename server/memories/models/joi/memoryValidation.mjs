@@ -8,7 +8,7 @@ const memoryValidation = memory => {
   });
 
   const schema = Joi.object({
-    title: Joi.string().required(),
+    title: Joi.string().min(2).max(256).required(),
     description: Joi.string().required(),
     image: Joi.object()
       .keys({

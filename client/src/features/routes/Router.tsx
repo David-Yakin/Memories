@@ -1,20 +1,27 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import ROUTS from "./routesModel";
+import ROUTES from "./routesModel";
 import ErrorPage from "../general/pages/ErrorPage";
-import MemoriesPage from "../momories/pages/MemoriesPage";
+import MemoriesPage from "../memories/pages/MemoriesPage";
 import SignupPage from "../users/pages/SignupPage";
 import LoginPage from "../users/pages/LoginPage";
 import EditProfilePage from "../users/pages/EditProfilePage";
+import MemoryDetailsPage from "../memories/pages/MemoryDetailsPage";
+import CreateMemoryPage from "../memories/pages/CreateMemoryPage";
 
 const Router = () => {
   return (
     <Routes>
-      <Route path={ROUTS.ROOT} element={<MemoriesPage />} />
-      <Route path={ROUTS.MEMORIES} element={<MemoriesPage />} />
-      <Route path={ROUTS.SIGNUP} element={<SignupPage />} />
-      <Route path={ROUTS.LOGIN} element={<LoginPage />} />
-      <Route path={ROUTS.EDIT_USER} element={<EditProfilePage />} />
+      <Route path={ROUTES.ROOT} element={<MemoriesPage />} />
+      <Route path={ROUTES.CREATE_MEMORY} element={<CreateMemoryPage />} />
+      <Route path={ROUTES.MEMORIES} element={<MemoriesPage />} />
+      <Route
+        path={`${ROUTES.MEMORY_DETAILS}/:memoryId`}
+        element={<MemoryDetailsPage />}
+      />
+      <Route path={ROUTES.SIGNUP} element={<SignupPage />} />
+      <Route path={ROUTES.LOGIN} element={<LoginPage />} />
+      <Route path={ROUTES.EDIT_USER} element={<EditProfilePage />} />
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   );

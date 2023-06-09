@@ -1,4 +1,4 @@
-import NameInterface from "../../users/models/interfaces/NameInterface";
+import NameInterface from "../../../users/models/interfaces/NameInterface";
 import ImageInterface from "./ImageInterface";
 import LocationInterface from "./LocationInterface";
 
