@@ -4,7 +4,7 @@ const initialCreateMemoryObject: MemoryType = {
   title: "",
   description: "",
   imageUrl: "",
-  imageAlt: "",
+  // imageAlt: "",
   peopleInPic: [],
   state: "",
   country: "",

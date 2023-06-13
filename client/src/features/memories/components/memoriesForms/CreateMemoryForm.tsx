@@ -59,14 +59,14 @@ const CreateMemoryForm: FC<Props> = ({
         data={data}
         breakPoints={{ sm: 6 }}
       />
-      <Input
+      {/* <Input
         name="imageAlt"
         label="image description"
         error={errors.imageAlt}
         onInputChange={onInputChange}
         data={data}
         breakPoints={{ sm: 6 }}
-      />
+      /> */}
       <Input
         name="state"
         label="state"

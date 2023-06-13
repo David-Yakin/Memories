@@ -6,12 +6,17 @@ import MemoriesFeedback from "../components/MemoriesFeedback";
 import { useGetMemoriesQuery } from "../slices/memoryApiSlice";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModel";
+import { useAppSelector } from "../../../app/hooks";
 
 const MemoriesPage = () => {
   const { data: memories, isLoading, error } = useGetMemoriesQuery();
   const navigate = useNavigate();
+  const { user } = useAppSelector(state => state.auth);
+
+  if (!user) return <Navigate to={ROUTES.LOGIN} replace />;
+
   if (error && "data" in error) {
     console.log(error.data);
   }

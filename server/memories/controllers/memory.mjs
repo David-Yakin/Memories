@@ -8,15 +8,12 @@ export const createMemory = async (req, res) => {
   try {
     const user = req.user;
     const memory = req.body;
-
     const { error } = memoryValidation(memory);
     if (error)
       return handleError(res, 400, `Joi Error: ${error.details[0].message}`);
-
     const normalizedMemory = normalizeMemory(memory, user._id);
     const newMemory = new Memory(normalizedMemory);
     const memoryFormDB = await newMemory.save();
-
     res.status(201).send(memoryFormDB);
   } catch (error) {
     return handleError(res, error.status || 500, error.message);

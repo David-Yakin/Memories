@@ -2,13 +2,14 @@ import Joi from "joi";
 
 const memoryValidation = memory => {
   const nameSchema = Joi.object({
+    _id: Joi.string().min(2).allow(""),
     first: Joi.string().min(2).required(),
     middle: Joi.string().min(2).allow(""),
     last: Joi.string().min(2).required(),
   });
 
   const schema = Joi.object({
-    title: Joi.string().min(2).max(256).required(),
+    // title: Joi.string().min(2).max(256).required(),
     description: Joi.string().required(),
     image: Joi.object()
       .keys({

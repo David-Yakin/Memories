@@ -4,7 +4,7 @@ import LocationInterface from "./LocationInterface";
 
 interface MemoryInterface {
   _id: string;
-  title: string;
+  // title: string;/
   description: string;
   image: ImageInterface;
   peopleInPic: NameInterface[];

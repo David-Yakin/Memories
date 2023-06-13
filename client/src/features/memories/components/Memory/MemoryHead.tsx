@@ -10,7 +10,7 @@ import { makeFirstLetterCapital } from "../../utils/algoMethods";
 type Props = { memory: MemoryInterface };
 
 const MemoryHead: React.FC<Props> = ({ memory }) => {
-  const { image, title, createdAt } = memory;
+  const { image, createdAt } = memory;
   const { url, alt } = image;
 
   return (
@@ -19,11 +19,11 @@ const MemoryHead: React.FC<Props> = ({ memory }) => {
         component="img"
         image={url}
         alt={alt}
-        title={title}
+        title={alt}
         sx={memoryImg}
       />
       <CardHeader
-        title={makeFirstLetterCapital(title)}
+        title={makeFirstLetterCapital(alt)}
         subheader={moment(createdAt).fromNow()}
         subheaderTypographyProps={{ color: "white" }}
         sx={textOverlayLeft}

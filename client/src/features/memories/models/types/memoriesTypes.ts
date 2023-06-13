@@ -18,7 +18,7 @@ export type MemoryType = {
   title: string;
   description: string;
   imageUrl: string;
-  imageAlt: string;
+  // imageAlt: string;
   peopleInPic: NameType[];
   state?: string;
   country: string;

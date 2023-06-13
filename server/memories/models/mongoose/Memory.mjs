@@ -22,7 +22,6 @@ const EMAIL_VALIDATION = {
   match: RegExp(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/),
   lowercase: true,
   trim: true,
-  unique: true,
 };
 
 const URL_VALIDATION = {
@@ -44,6 +43,7 @@ const LOCATION_VALIDATION = new mongoose.Schema({
 });
 
 const NAME_VALIDATION = new mongoose.Schema({
+  _id: NOT_REQUIRED,
   first: DEFAULT_VALIDATION,
   middle: NOT_REQUIRED,
   last: DEFAULT_VALIDATION,
@@ -55,7 +55,7 @@ const IMAGE_VALIDATION = new mongoose.Schema({
 });
 
 const schema = new mongoose.Schema({
-  title: DEFAULT_VALIDATION,
+  // title: DEFAULT_VALIDATION,
   description: DEFAULT_VALIDATION,
   image: IMAGE_VALIDATION,
   peopleInPic: [NAME_VALIDATION],

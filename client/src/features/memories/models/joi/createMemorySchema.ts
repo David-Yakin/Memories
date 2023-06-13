@@ -26,7 +26,7 @@ const createMemorySchema = {
   title: DEFAULT_VALIDATION,
   description: DEFAULT_VALIDATION,
   imageUrl: URL_VALIDATION,
-  imageAlt: DEFAULT_VALIDATION,
+  // imageAlt: DEFAULT_VALIDATION,
   peopleInPic: Joi.array().items(nameSchema),
   state: NOT_REQUIRED,
   country: DEFAULT_VALIDATION,
