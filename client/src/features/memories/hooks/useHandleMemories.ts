@@ -4,6 +4,7 @@ import { useSnack } from "../../general/providers/SnackbarProvider";
 import {
   useCreateMemoryMutation,
   useDeleteMemoryMutation,
+  useGetMemoriesMutation,
   useGetMemoryMutation,
 } from "../slices/memoryApiSlice";
 import { setMemory, setMemories, addMemory } from "../slices/memoriesSlice";
@@ -18,9 +19,11 @@ type ReturnType = {
   isMemoryLoading: boolean;
   handleCreateNewMemory: (memoryFromForm: MemoryType) => void;
   isCreateMemoryLoading: boolean;
-  handleGetMemories: (memoriesFromDB: MemoryInterface[]) => void;
+  handleGetMemories: () => void;
+  isMemoriesLoading: boolean;
   handleDeleteMemory: (memoryId: string) => void;
   isDeleteMemoryLoading: boolean;
+  getMemoriesError: any;
 };
 
 const useHandleMemories = (): ReturnType => {
@@ -28,23 +31,25 @@ const useHandleMemories = (): ReturnType => {
   const dispatch = useAppDispatch();
   const snack = useSnack();
 
+  const [
+    getMemories,
+    { isLoading: isMemoriesLoading, error: getMemoriesError },
+  ] = useGetMemoriesMutation();
   const [getMemory, { isLoading: isMemoryLoading }] = useGetMemoryMutation();
   const [createMemory, { isLoading: isCreateMemoryLoading }] =
     useCreateMemoryMutation();
   const [deleteMemory, { isLoading: isDeleteMemoryLoading }] =
     useDeleteMemoryMutation();
 
-  const handleGetMemories = useCallback(
-    async (memoriesFromDB: MemoryInterface[]) => {
-      try {
-        dispatch(setMemories(memoriesFromDB));
-      } catch (error: Record<string, unknown> | any) {
-        snack("error", `Get Memory Error: ${error.data || error.error}`);
-        navigate(ROUTES.ROOT);
-      }
-    },
-    []
-  );
+  const handleGetMemories = useCallback(async () => {
+    try {
+      const memories = await getMemories();
+      if ("data" in memories) dispatch(setMemories(memories.data));
+    } catch (error: Record<string, unknown> | any) {
+      snack("error", `Get Memory Error: ${error.data || error.error}`);
+      navigate(ROUTES.ROOT);
+    }
+  }, []);
 
   const handleGetMemory = useCallback(async (memoryId: string) => {
     try {
@@ -76,11 +81,13 @@ const useHandleMemories = (): ReturnType => {
   };
 
   return {
+    handleGetMemories,
+    isMemoriesLoading,
+    getMemoriesError,
     handleGetMemory,
     isMemoryLoading,
     handleCreateNewMemory,
     isCreateMemoryLoading,
-    handleGetMemories,
     handleDeleteMemory,
     isDeleteMemoryLoading,
   };

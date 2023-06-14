@@ -11,10 +11,10 @@ import MemoryInterface from "../../models/interfaces/MemoryInterface";
 
 type Props = {
   memory: MemoryInterface;
-  // onDelete: (x: string) => void;
+  onDelete: () => void;
 };
 
-const Memory: React.FC<Props> = ({ memory }) => {
+const Memory: React.FC<Props> = ({ memory, onDelete }) => {
   const navigate = useNavigate();
   return (
     <Grid item xs={12} sm={6} lg={4}>
@@ -25,7 +25,7 @@ const Memory: React.FC<Props> = ({ memory }) => {
           <MemoryBody memory={memory} />
         </CardActionArea>
 
-        <CardActionBar onDelete={() => {}} memoryId={memory._id} />
+        <CardActionBar onDelete={onDelete} memoryId={memory._id} />
       </MuiCard>
     </Grid>
   );

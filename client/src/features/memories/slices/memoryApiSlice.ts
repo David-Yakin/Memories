@@ -5,7 +5,11 @@ const MEMORIES_API = "/memories";
 
 const memoriesApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
-    getMemories: builder.query<MemoryInterface[], void>({
+    // getMemories: builder.query<MemoryInterface[], void>({
+    //   query: () => MEMORIES_API,
+    // }),
+
+    getMemories: builder.mutation<MemoryInterface[], void>({
       query: () => MEMORIES_API,
     }),
 
@@ -54,7 +58,8 @@ const memoriesApiSlice = apiSlice.injectEndpoints({
 });
 
 export const {
-  useGetMemoriesQuery,
+  // useGetMemoriesQuery,
+  useGetMemoriesMutation,
   useGetMemoryMutation,
   useCreateMemoryMutation,
   useEditMemoryMutation,

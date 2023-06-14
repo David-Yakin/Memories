@@ -3,7 +3,6 @@ import { Container } from "@mui/material";
 // import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 // import MemoryInterface from "../interfaces/MemoryInterface";
 import MemoriesFeedback from "../components/MemoriesFeedback";
-import { useGetMemoriesQuery } from "../slices/memoryApiSlice";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -16,23 +15,22 @@ const MemoriesPage = () => {
   const navigate = useNavigate();
   const { user } = useAppSelector(state => state.auth);
 
-  const { handleGetMemories } = useHandleMemories();
+  const { handleGetMemories, isMemoriesLoading, getMemoriesError } =
+    useHandleMemories();
 
-  const {
-    data: memories,
-    isLoading: isMemoriesLoading,
-    error: memoriesError,
-  } = useGetMemoriesQuery();
+  const { memories } = useAppSelector(state => state.memories);
 
   useEffect(() => {
-    if (memories) handleGetMemories(memories);
+    handleGetMemories();
   }, []);
 
   if (!user) return <Navigate to={ROUTES.LOGIN} replace />;
 
-  if (memoriesError && "data" in memoriesError) {
-    console.log(memoriesError.data);
-  }
+  const handleDeleteMemory = () => {
+    console.log("in memories page handleDeleteMemory");
+
+    handleGetMemories();
+  };
 
   const checkError = (errorObj: any) => {
     return errorObj && "data" in errorObj && typeof errorObj.data === "string"
@@ -45,7 +43,8 @@ const MemoriesPage = () => {
       <MemoriesFeedback
         memories={memories!}
         isLoading={isMemoriesLoading}
-        error={checkError(memoriesError)}
+        error={checkError(getMemoriesError)}
+        onDelete={handleDeleteMemory}
       />
       <Fab
         onClick={() => navigate(ROUTES.CREATE_MEMORY)}

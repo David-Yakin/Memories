@@ -10,7 +10,7 @@ import DeleteDialog from "../../../general/components/DeleteDialog";
 import useHandleMemories from "../../hooks/useHandleMemories";
 
 type Props = {
-  onDelete: (id: string) => void;
+  onDelete: () => void;
   memoryId: string;
 };
 
@@ -26,6 +26,7 @@ const MemoryActionBar: React.FC<Props> = ({ onDelete, memoryId }) => {
   const handleDelete = () => {
     handleDialog();
     handleDeleteMemory(memoryId);
+    onDelete();
   };
 
   return (
