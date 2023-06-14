@@ -32,7 +32,7 @@ type Return = {
 };
 
 const useHandleUsers = (): Return => {
-  // const { user } = useAppSelector(state => state.auth);/
+  // const { user } = useAppSelector(state => state.auth);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [login, { isLoading: isLoginLoading }] = useLoginMutation();

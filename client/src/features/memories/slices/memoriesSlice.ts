@@ -21,8 +21,11 @@ const memoriesSlice = createSlice({
     setMemory: (state, action) => {
       state.memory = action.payload;
     },
+    addMemory: (state, action) => {
+      state.memories?.push(action.payload);
+    },
   },
 });
 
-export const { setMemories, setMemory } = memoriesSlice.actions;
+export const { setMemories, setMemory, addMemory } = memoriesSlice.actions;
 export default memoriesSlice.reducer;

@@ -9,16 +9,29 @@ import AddIcon from "@mui/icons-material/Add";
 import { Navigate, useNavigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModel";
 import { useAppSelector } from "../../../app/hooks";
+import { useEffect } from "react";
+import useHandleMemories from "../hooks/useHandleMemories";
 
 const MemoriesPage = () => {
-  const { data: memories, isLoading, error } = useGetMemoriesQuery();
   const navigate = useNavigate();
   const { user } = useAppSelector(state => state.auth);
 
+  const { handleGetMemories } = useHandleMemories();
+
+  const {
+    data: memories,
+    isLoading: isMemoriesLoading,
+    error: memoriesError,
+  } = useGetMemoriesQuery();
+
+  useEffect(() => {
+    if (memories) handleGetMemories(memories);
+  }, []);
+
   if (!user) return <Navigate to={ROUTES.LOGIN} replace />;
 
-  if (error && "data" in error) {
-    console.log(error.data);
+  if (memoriesError && "data" in memoriesError) {
+    console.log(memoriesError.data);
   }
 
   const checkError = (errorObj: any) => {
@@ -31,8 +44,8 @@ const MemoriesPage = () => {
     <Container>
       <MemoriesFeedback
         memories={memories!}
-        isLoading={isLoading}
-        error={checkError(error)}
+        isLoading={isMemoriesLoading}
+        error={checkError(memoriesError)}
       />
       <Fab
         onClick={() => navigate(ROUTES.CREATE_MEMORY)}

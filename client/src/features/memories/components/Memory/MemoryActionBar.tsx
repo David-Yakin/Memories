@@ -6,19 +6,34 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import ShareIcon from "@mui/icons-material/Share";
+import DeleteDialog from "../../../general/components/DeleteDialog";
+import useHandleMemories from "../../hooks/useHandleMemories";
 
 type Props = {
-  onDelete: (x: string) => void;
+  onDelete: (id: string) => void;
   memoryId: string;
 };
 
 const MemoryActionBar: React.FC<Props> = ({ onDelete, memoryId }) => {
+  const { handleDeleteMemory } = useHandleMemories();
   const [isDialogOpen, setDialog] = useState(false);
+
+  const handleDialog = (term?: string) => {
+    if (term === "open") return setDialog(true);
+    setDialog(false);
+  };
+
+  const handleDelete = () => {
+    handleDialog();
+    handleDeleteMemory(memoryId);
+  };
 
   return (
     <CardActions disableSpacing sx={{ pt: 0, justifyContent: "space-between" }}>
       <Box>
-        <IconButton onClick={() => onDelete(memoryId)} aria-label="delete card">
+        <IconButton
+          onClick={() => handleDialog("open")}
+          aria-label="delete card">
           <DeleteIcon />
         </IconButton>
 
@@ -35,6 +50,12 @@ const MemoryActionBar: React.FC<Props> = ({ onDelete, memoryId }) => {
           <FavoriteIcon />
         </IconButton>
       </Box>
+      <DeleteDialog
+        isDialogOpen={isDialogOpen}
+        item="memory"
+        onChangeDialog={handleDialog}
+        onDelete={handleDelete}
+      />
     </CardActions>
   );
 };

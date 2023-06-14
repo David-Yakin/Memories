@@ -21,6 +21,7 @@ const Menu: React.FC<Props> = ({ isOpen, anchorEl, onClose }) => {
   const [isDialogOpen, setDialog] = useState(false);
 
   const { handleDeleteUser, isDeleteUserLoading } = useHandleUsers();
+
   const handleDialog = (term?: string) => {
     if (term === "open") return setDialog(true);
     setDialog(false);
